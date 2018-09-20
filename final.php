@@ -60,7 +60,7 @@ class Filecomparison {
 
 
 
-	/*function &Filecomparison3($diffr2){
+	function Filecomparison3(array $diffr2){
 			foreach ($diffr2 as $value) {
 				$final = NULL;
 				$value2 = getcwd().'/'.$value;
@@ -80,7 +80,7 @@ class Filecomparison {
 				        $final = $final . "ok \n";
 				      }
 				      else
-				        $final = $final . "not \n";
+				        $final = $final . "not \n";					///////////checking line by line
 				    }
 				   if (!feof($value1_temp) || !feof($value2_temp)){
 				    $final = $final . "error \n";
@@ -103,12 +103,12 @@ class Filecomparison {
 
   		$ultimatevalue1 = explode(' ', $ultimatevalue1);
   		$ultimatevalue2 = explode(' ', $ultimatevalue2);
-  		print_r($ultimatevalue1);	
+  		//print_r($ultimatevalue1);	
 
-  		return $ultimatevalue1;
+  		return array_values($ultimatevalue1);
 
 
-	}*/
+	}
 
 
 
@@ -126,58 +126,16 @@ $a = $filecompare1->Filecomparison1();
 $b = $filecompare2->Filecomparison2();
 
 $diffr1 = array_diff($a, $b);                                   				 ///////files which are in v1 but not in v2.
-$diffr3 = array_diff($b, $a);													 ///////files which are in v2 but not in v2.
+$diffr3 = array_diff($b, $a);									///////files which are in v2 but not in v2.
 $diffr2 = array_intersect($a, $b);
 
-//print_r($diffr2);
+$filecompare3 = new Filecomparison;
+$c = $filecompare3->Filecomparison3($diffr2);
+
+//print_r($c);
 //echo getcwd();
 
 
-
-		foreach ($diffr2 as $value) {
-				$final = NULL;
-				$value2 = getcwd().'/'.$value;
-				$value2_temp = fopen($value2,"r");
-
-				chdir("../");
-				chdir("v1");
-
-				$value1 = getcwd().'/'.$value;
-				$value1_temp = fopen($value1,"r");
-				chdir("../");
-				chdir("v2");
-
-				  if ($value1_temp && $value2_temp) {
-				    while ((($buffer1 = fgets($value1_temp, 4096)) && ($buffer2 = fgets($value2_temp, 4096))) != false) {
-				      if ($buffer1 == $buffer2) {
-				        $final = $final . "ok \n";
-				      }
-				      else
-				        $final = $final . "not \n";
-				    }
-				   if (!feof($value1_temp) || !feof($value2_temp)){
-				    $final = $final . "error \n";
-				   } 
-
-				   if(preg_match("/not/", $final, $matchess)){
-				    $ultimatevalue1 = $ultimatevalue1 . $value ." ";                   ////////////  file common in v1 and v2, but content is not same.
-				    //print_r($matchess);
-				   }
-				   else
-				    $ultimatevalue2 = $ultimatevalue2 . $value . " ";
-				    //echo '</br> </br>';
-				  }
-
-
-
-	  		fclose($value1_temp);
-  			fclose($value2_temp);
-		
-		}
-
-  		$ultimatevalue1 = explode(' ', $ultimatevalue1);
-  		$ultimatevalue2 = explode(' ', $ultimatevalue2);
-  		//print_r($ultimatevalue1);	
 
 
 ?>
