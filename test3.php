@@ -13,12 +13,12 @@ $files1 = scandir($dir);
 $dir1    = dirname(chdir(v1));
 $files1 = scandir($dir1);
 
-
+$x = getcwd();
 $di = new RecursiveDirectoryIterator(getcwd());
 //$filename1 = NULL;
 foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
     $filename1 = $filename1 . $filename . " ";
-    $filename1_temp = str_replace('/Users/tejeshagrawal/Downloads/task-websites/v1/', '', $filename1);
+    $filename1_temp = str_replace($x, '', $filename1);
     //echo $filename . ' - ' . $file->getSize() . ' bytes <br/>';
     
 }
@@ -38,12 +38,12 @@ $files2 = scandir($dir2);
 
 
 //echo basename(getcwd());
-
+$y = getcwd();
 $di = new RecursiveDirectoryIterator(getcwd());
 //$filename2 = NULL;
 foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
   $filename2 = $filename2 . $filename . " ";
-  $filename2_temp = str_replace('/Users/tejeshagrawal/Downloads/task-websites/v2/', '', $filename2);
+  $filename2_temp = str_replace($y, '', $filename2);
     //echo $filename . ' - ' . $file->getSize() . ' bytes <br/>';
     
 }
