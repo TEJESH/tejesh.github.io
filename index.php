@@ -42,8 +42,7 @@
         foreach($diffr1 as $match) {e
         ?>
         <div class="col-4"><?php echo $match; ?></div>
-        <div class="col-4"><?php echo $match; ?></div>
-        <div class="col-4"><?php echo $match; ?></div>
+        
         <?php
         }
         
@@ -58,8 +57,7 @@
         foreach($diffr3 as $match) {e
         ?>
         <div class="col-sm-4"><?php echo $match; ?></div>
-        <div class="col-sm-4"><?php echo $match; ?></div>
-        <div class="col-sm-4"><?php echo $match; ?></div>
+        
         <?php
         }
         
@@ -74,8 +72,7 @@
         foreach($ultimatevalue1 as $match) {
         ?>
         <div class="col-4"><?php echo $match; ?></div>
-        <div class="col-4"><?php echo $match; ?></div>
-        <div class="col-4"><?php echo $match; ?></div>
+        
         <?php
         }
         
